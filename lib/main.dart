@@ -1,4 +1,5 @@
 import 'package:first_app/widgets/Button.dart';
+import 'package:first_app/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFF181818),
-        body: Padding(
+        body: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
@@ -49,7 +51,7 @@ class App extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 120,
+                  height: 70,
                 ),
                 Text(
                   'Total Balance',
@@ -86,9 +88,62 @@ class App extends StatelessWidget {
                       textColor: Colors.white,
                     ),
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'Wallets',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.8),
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CurrencyCard(
+                  name: 'Euro',
+                  code: 'EUR',
+                  amount: '6 428',
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                  order: 0,
+                ),
+                const CurrencyCard(
+                  name: 'Bitcoin',
+                  code: 'BTC',
+                  amount: '9 785',
+                  icon: Icons.currency_bitcoin,
+                  isInverted: true,
+                  order: 1,
+                ),
+                const CurrencyCard(
+                  name: 'Dollar',
+                  code: 'USD',
+                  amount: '428',
+                  icon: Icons.attach_money_outlined,
+                  isInverted: false,
+                  order: 2,
+                ),
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
